@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Denúncias | Acidente de Trânsito</title>
+    <link rel="stylesheet" href="./src/css/global.css">
+</head>
+<body>
+    <main>
+        <h1>Denúncia - Acidente de Trânsito</h1>
+        <form>
+            <div class="atributo">
+                <label>Data do fato:</label>
+                <input type="date" id="data">
+            </div>
+            <div class="atributo">
+                <label>Local do fato:</label>
+                <input type="text" id="local" required>
+            </div>
+            <div class="atributo">
+                <label>Vítima:</label>
+                <input type="text" id="vitima" required>
+            </div>
+            <div class="atributo">
+                <label>Placa de veículo da vítima:</label>
+                <input type="text" id="placaVitima" required>
+            </div>
+            <div class="atributo">
+                <label>Tipo de veículo da vítima:</label>
+                <select id="veiculoVitima" required>
+                    <option value="" disabled>Selecione um</option>
+                    <option>Moto</option>
+                    <option>Carro</option>
+                </select>
+            </div>
+            <div class="atributo">
+                <label>Infrator:</label>
+                <input type="text" id="infrator" required>
+            </div>
+            <div class="atributo">
+                <label>Placa de veículo da Infrator:</label>
+                <input type="text" id="placaInfrator" required>
+            </div>
+            <div class="atributo">
+                <label>Tipo de veículo da vítima:</label>
+                <select id="veiculoInfrator" required>
+                    <option value="" disabled>Selecione um</option>
+                    <option>Moto</option>
+                    <option>Carro</option>
+                </select></div>
+            <div class="atributo">
+                <label>Relate o ocorrido:</label>
+                <textarea id="relato" required></textarea>
+            </div>
+            <button type="button" onclick="trocarPagina()">Continuar</button>
+        </form>
+    </main>
+    <script src="./src/js/acidenteTransito.js"></script>
+</body>
+</html>

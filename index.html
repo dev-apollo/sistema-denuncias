@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Denúncias | Início</title>
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/index.css">
+</head>
+<body>
+    <main>
+        <h1>Denúncias</h1>
+        <form>
+            <div class="atributo">
+                <label>Selecione o tipo de denúncia:</label>
+                <select id="selectTipoDenuncia" required>
+                    <option value="" disabled>Selecione uma</option>
+                    <option value="acidenteTransito">Acidente de Trânsito</option>
+                    <option value="agressao">Agressão</option>
+                </select>
+            </div>
+            <button type="button" onclick="trocarPagina()">Continuar</button>
+        </form>
+    </main>
+    <script src="./src/js/index.js"></script>
+</body>
+</html>

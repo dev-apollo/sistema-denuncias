@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Denúncias | Agressão</title>
+    <link rel="stylesheet" href="./src/css/global.css">
+</head>
+<body>
+    <main>
+        <h1>Denúncia - Agressão</h1>
+        <form>
+            <div class="atributo">
+                <label>Data do fato:</label>
+                <input type="date" id="data" required>
+            </div>
+            <div class="atributo">
+                <label>Local do fato:</label>
+                <input type="text" id="local" required>
+            </div>
+            <div class="atributo">
+                <label>Agressor:</label>
+                <input type="text" id="agressor" required>
+            </div>
+            <div class="atributo">
+                <label>Vítima:</label>
+                <input type="text" id="vitima" required>
+            </div>
+            <div class="atributo">
+                <label>Relate o ocorrido:</label>
+                <textarea id="relato" required></textarea>
+            </div>
+            <button type="button" onclick="trocarPagina()">Continuar</button>
+        </form>
+    </main>
+    <script src="./src/js/agressao.js"></script>
+</body>
+</html>
