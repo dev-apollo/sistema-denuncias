@@ -16,3 +16,102 @@ button:hover {
 .atributo {
     margin-bottom: 10px;
 }
+
+
+
+.titulo {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+
+.etapa {
+    display: none; 
+    border: none; 
+    padding: 0;   
+    margin: 0;    
+    width: 100%;  
+    max-width: 600px; 
+}
+
+.etapa.ativa {
+    display: block; /
+}
+
+.forms { 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    min-height: 100vh;
+    min-width: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto; 
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.card-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 20px;
+    width: 100%;
+}    
+
+
+.card-conteudo legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px; 
+    text-align: start; 
+    width: 100%;        
+}
+
+.campo-form {
+    display: flex;
+    flex-direction: column; 
+    width: 80%; 
+    
+}
+
+.campo-form label {
+    margin-bottom: 5px; 
+    font-weight: normal; 
+    text-align: start; 
+}
+
+.campo-form input,
+.campo-form select,
+.campo-form textarea { 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.botoes-navegacao {
+    text-align: center;
+    width: 100%;   
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn-proximo,
+.btn-enviar {
+    margin-left: auto; 
+}

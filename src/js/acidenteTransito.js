@@ -1,60 +1,34 @@
-function getInfosAcidenteTransito() {
-    let data = document.getElementById("data").value
-    let local = document.getElementById("local").value
-    let vitima = document.getElementById("vitima").value
-    let placaVitima = document.getElementById("placaVitima").value
-    let veiculoVitima = document.getElementById("veiculoVitima").value
-    let infrator = document.getElementById("infrator").value
-    let placaInfrator = document.getElementById("placaInfrator").value
-    let veiculoInfrator = document.getElementById("veiculoInfrator").value
-    let relato = document.getElementById("relato").value
-    let infos = {
-        data: {
-            nome: "Data",
-            valor: data
-        },
-        local: {
-            nome: "Local",
-            valor: local
-        },
-        vitima: {
-            nome: "Vítima",
-            valor: vitima
-        },
-        placaVitima: {
-            nome: "Placa da vítima",
-            valor: placaVitima
-        },
-        veiculoVitima: {
-            nome: "Veículo da vítima",
-            valor: veiculoVitima
-        },
-        infrator: {
-            nome: "Infrator",
-            valor: infrator
-        },
-        placaInfrator: {
-            nome: "Placa do infrator",
-            valor: placaInfrator
-        },
-        veiculoInfrator: {
-            nome: "Veículo do infrator",
-            valor: veiculoInfrator
-        },
-        relato: {
-            nome: "Relato",
-            valor: relato
+(() => {
+    let infos = JSON.parse(sessionStorage.getItem("denuncia"))
+    let divInfos = document.getElementById("infos")
+    for(const key in infos){
+        if(key === 'veiculos'){
+            const veiculosObj = infos.veiculos.valores;
+            const numVeiculos = veiculosObj.placas.length;
+
+            let pTitulo = document.createElement("p");
+            pTitulo.innerHTML = `<b>${infos.veiculos.nome}:<b>`;
+            divInfos.appendChild(pTitulo);
+           
+            for (let i = 0; i < numVeiculos; i++) {
+                let pVeiculo = document.createElement("p");
+                pVeiculo.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;• Veículo ${i + 1}: ${veiculosObj.tipos[i]} ${veiculosObj.modelos[i]}, cor ${veiculosObj.cores[i]}, placa ${veiculosObj.placas[i]}.`;
+                divInfos.appendChild(pVeiculo);
+            }
+        }else{
+            let p = document.createElement("p");
+            const item = infos[key];
+            const valor = item.valor;
+            const valorExibido = (valor && String(valor).trim() !== "") ? valor : "<i>Não identificado</i>";
+
+            p.innerHTML = `<b>${item.nome}:</b> ${valorExibido}`;
+            divInfos.appendChild(p);
         }
     }
-    console.log(infos)
-    return JSON.stringify(infos)
-}
+})()
 
-function armazenarInfosAcidenteTransito() {
-    sessionStorage.setItem("denuncia", getInfosAcidenteTransito())
-}
-
-function trocarPagina(){
-    armazenarInfosAcidenteTransito()
-    window.location = "./denuncia.html"
+function confirmarDenuncia(){
+    alert("Denúncia registrada!")
+    sessionStorage.clear()
+    window.location = "index.html"
 }

@@ -7,54 +7,166 @@
     <link rel="stylesheet" href="./src/css/global.css">
 </head>
 <body>
-    <main>
-        <h1>Denúncia - Acidente de Trânsito</h1>
+    <main class=>
+        <h1 class="titulo">Denúncia - Acidente de Trânsito</h1>
         <form>
-            <div class="atributo">
-                <label>Data do fato:</label>
-                <input type="date" id="data">
-            </div>
-            <div class="atributo">
-                <label>Local do fato:</label>
-                <input type="text" id="local" required>
-            </div>
-            <div class="atributo">
-                <label>Vítima:</label>
-                <input type="text" id="vitima" required>
-            </div>
-            <div class="atributo">
-                <label>Placa de veículo da vítima:</label>
-                <input type="text" id="placaVitima" required>
-            </div>
-            <div class="atributo">
-                <label>Tipo de veículo da vítima:</label>
-                <select id="veiculoVitima" required>
-                    <option value="" disabled>Selecione um</option>
-                    <option>Moto</option>
-                    <option>Carro</option>
-                </select>
-            </div>
-            <div class="atributo">
-                <label>Infrator:</label>
-                <input type="text" id="infrator" required>
-            </div>
-            <div class="atributo">
-                <label>Placa de veículo da Infrator:</label>
-                <input type="text" id="placaInfrator" required>
-            </div>
-            <div class="atributo">
-                <label>Tipo de veículo da vítima:</label>
-                <select id="veiculoInfrator" required>
-                    <option value="" disabled>Selecione um</option>
-                    <option>Moto</option>
-                    <option>Carro</option>
-                </select></div>
-            <div class="atributo">
-                <label>Relate o ocorrido:</label>
-                <textarea id="relato" required></textarea>
-            </div>
-            <button type="button" onclick="trocarPagina()">Continuar</button>
+            <fieldset id="primeiraEtapa" class="etapa card">
+                <div class="card-conteudo">
+                    <legend>Insira a data e hora do fato</legend> <div class="campo-form">
+                        <label for="data">Data do Fato</label>
+                        <input type="date" id="data" required>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="horario">Hora do Fato</label>
+                        <input type="time" id="horario" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset id="segundaEtapa" class="etapa card">
+                <div class="card-conteudo">
+                    <legend>Endereço do Fato</legend>
+
+                    <div class="campo-form">
+                        <label for="tipoLocal">Tipo de local</label>
+                        <select id="tipoLocal" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option>Outros</option>
+                            <option>Via Férrea</option>
+                            <option>Via Pública</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="pais">País</label>
+                        <input type="text" id="pais" disabled value="BRASIL">
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" placeholder="Insira a cidade..." required>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="logradouro">Logradouro</label>
+                        <input type="text" id="logradouro" placeholder="Insira o logradouro..." required>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="estado">Estado</label>
+                        <input type="text" id="estado" disabled value="SANTA CATARINA">
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="bairro">Bairro</label>
+                        <input type="text" id="bairro" placeholder="Insira o bairro..." required>
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" placeholder="Insira o Número..." required>
+                    </div>
+
+                </div>
+            </fieldset>
+                
+            <fieldset id="terceiraEtapa" class="etapa card">
+                <div class="card-conteudo">
+
+                    <legend>Envolvidos</legend>
+
+                    <div class="campo-form">
+                        <label for="nomeEnvolvido">Nome completo</label>
+                        <input type="text" id="nomeEnvolvido" placeholder="Nome completo do envolvido..." required>
+                    </div>
+        
+                    <div class="campo-form">
+                        <label for="nomeMaeEnvolvido">Nome da mãe</label>
+                        <input type="text" id="nomeMaeEnvolvido" placeholder="Nome completo da mãe do envolvido..." required>
+                    </div>
+        
+                    <div class="campo-form">
+                        <label for="sexo">Sexo</label>
+                        <select id="sexo" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option>Feminino</option>
+                            <option>Masculino</option>
+                            <option>Não especificado</option>
+                            <option>A identificar</option>
+                        </select>
+                    </div>
+        
+                    <div class="campo-form">
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" required>
+                    </div>
+                   
+                </div>
+
+            </fieldset> 
+
+            <fieldset id="quartaEtapa" class="etapa card">
+                <div class="card-conteudo">
+                    <legend>Veículos envolvidos</legend>
+
+                    <div id="containerVeiculos"></div>
+
+                    <button type="button" id="btnAddVeiculo" onclick="adicionarVeiculo()" class="btn-adicionar">+ Adicionar veículo</button>
+                </div>
+            </fieldset>
+
+            <template id="templateVeiculo">
+                <fieldset class="card">
+                    <div class="card-conteudo">
+                        <legend>Veículo Adicionado</legend>
+
+                        <div class="campo-form">
+                            <label>Placa</label>
+                            <input type="text" name="placas[]" required>
+                        </div>
+
+                        <div class="campo-form">
+                            <label>Tipo de veículo</label> <select name="tiposVeiculo[]" required>
+                                <option value="" disabled selected>Selecione...</option>
+                                <option>Moto</option>
+                                <option>Carro</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-form">
+                            <label>Modelo</label>
+                            <input type="text" name="modelos[]" required>
+                        </div>
+
+                        <div class="campo-form">
+                            <label>Cor</label>
+                            <input type="text" name="cores[]" required>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </template>
+
+            <fieldset id="quintaEtapa" class="etapa card">
+                <div class="card-conteudo">
+
+                    <legend>Relato do Fato</legend>
+
+                    <div class="campo-form">
+                        <label for="relatoOcorrido">Descreva o fato</label>
+                        <textarea id="relatoOcorrido" placeholder="Descreva com detalhes como o acidente ocorreu..." required></textarea>
+                    </div>
+
+                </div> 
+            </fieldset>
+
         </form>
+        <div class="botoes-navegacao"> 
+            <button type="button" id="btnAnterior" onclick="etapaAnterior()">Etapa anterior</button>
+            <button type="button" id="btnProximo" onclick="proxEtapa()">Próxima etapa</button>
+            <button type="submit" id="btnEnviar" onclick="enviarDenuncia()">Finalizar Denúncia</button>
+        </div>
     </main>
     <script src="./src/js/acidenteTransito.js"></script>
 </body>
